@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deepak Patel | HR Associate</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* THEME COLORS */
+      --bg-color: #020617;
+      --bg-alt: #020617;
+      --accent: #6366f1;
+      --accent-soft: rgba(99, 102, 241, 0.18);
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --card-bg: #0b1220;
+      --border-soft: rgba(148, 163, 184, 0.25);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.75);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.18) 0, transparent 50%),
+        radial-gradient(circle at 90% 0%, rgba(129, 140, 248, 0.2) 0, transparent 55%),
+        radial-gradient(circle at 50% 100%, rgba(15, 23, 42, 1) 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), transparent);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.25);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 16px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-badge {
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #a5b4fc 0, #4f46e5 35%, #1e293b 100%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      border: 1px solid rgba(191, 219, 254, 0.4);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.9);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--text-muted);
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    nav a:hover {
+      color: #e5e7eb;
+      border-color: rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.85);
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.5fr);
+      gap: 32px;
+      align-items: center;
+      margin-top: 28px;
+      margin-bottom: 40px;
+    }
+
+    .hero-main {
+      padding-right: 8px;
+    }
+
+    .tag-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+
+    .tag-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #a5b4fc;
+      box-shadow: 0 0 12px rgba(129, 140, 248, 0.9);
+    }
+
+    h1 {
+      font-size: clamp(2.1rem, 3vw + 1.4rem, 2.8rem);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .hero-role {
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 14px;
+    }
+
+    .hero-summary {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 20px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      background: transparent;
+      color: var(--text-main);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #4f46e5);
+      box-shadow: 0 16px 35px rgba(79, 70, 229, 0.7);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 50px rgba(79, 70, 229, 0.9);
+    }
+
+    .btn-ghost {
+      border-color: rgba(148, 163, 184, 0.55);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .btn-ghost:hover {
+      border-color: rgba(209, 213, 219, 0.85);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .meta-label {
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    .meta-value {
+      font-weight: 500;
+    }
+
+    /* Hero card (photo) */
+    .hero-card {
+      background: radial-gradient(circle at top, #020617 0, #020617 40%, #020617 100%);
+      border-radius: var(--radius-xl);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      background: rgba(15, 23, 42, 0.96);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-stat-chip {
+      position: absolute;
+      top: 18px;
+      left: 20px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    .hero-photo-wrapper {
+      margin-top: 40px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo-ring {
+      width: 165px;
+      height: 165px;
+      border-radius: 999px;
+      padding: 4px;
+      background: conic-gradient(
+        from 180deg,
+        rgba(129, 140, 248, 0.45),
+        rgba(56, 189, 248, 0.45),
+        rgba(190, 242, 100, 0.35),
+        rgba(129, 140, 248, 0.45)
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 20px 45px rgba(15, 23, 42, 1);
+      max-width: 70vw;
+      max-height: 70vw;
+    }
+
+    .hero-photo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, #020617 0, #020617 45%, #020617 100%);
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      object-fit: cover;
+      border: 2px solid rgba(15, 23, 42, 1);
+    }
+
+    .hero-photo-placeholder {
+      font-size: 3rem;
+      font-weight: 600;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 70%);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .hero-title-block {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.98);
+      border: 1px solid rgba(55, 65, 81, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .hero-title-main {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-title-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .hero-pulse {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 1);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 30px;
+    }
+
+    .section-card {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.98), #020617);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 20px;
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .section-title {
+      font-size: 1.05rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-title-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 16px rgba(99, 102, 241, 1);
+    }
+
+    .section-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Experience */
+    .experience-item {
+      padding: 10px 0 6px;
+      border-top: 1px solid rgba(31, 41, 55, 1);
+      margin-top: 4px;
+    }
+
+    .exp-main-line {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .exp-company {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .exp-dates {
+      font-size: 0.82rem;
+      color: #9ca3af;
+    }
+
+    .exp-tags {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .exp-list {
+      padding-left: 18px;
+      font-size: 0.86rem;
+      color: var(--text-main);
+    }
+
+    .exp-list li {
+      margin-bottom: 3px;
+    }
+
+    /* Education */
+    .education-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 14px;
+    }
+
+    .edu-item {
+      padding: 8px 10px;
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.22), rgba(15, 23, 42, 0.98));
+      font-size: 0.86rem;
+    }
+
+    .edu-degree {
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .edu-inst {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 3px;
+    }
+
+    .edu-years {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    /* Skills */
+    .skills-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .skill-group {
+      border-radius: 14px;
+      border: 1px solid rgba(31, 41, 55, 1);
+      padding: 8px 10px;
+      background: rgba(15, 23, 42, 0.98);
+      font-size: 0.85rem;
+    }
+
+    .skill-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #6b7280;
+      margin-bottom: 4px;
+    }
+
+    .skill-items {
+      font-size: 0.86rem;
+      color: var(--text-main);
+    }
+
+    /* Certifications */
+    .cert-list {
+      list-style: none;
+      font-size: 0.86rem;
+    }
+
+    .cert-list li {
+      margin-bottom: 4px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 14px;
+      align-items: flex-start;
+      font-size: 0.88rem;
+    }
+
+    .contact-item {
+      margin-bottom: 4px;
+    }
+
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #6b7280;
+    }
+
+    .contact-value a {
+      color: #e5e7eb;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.55);
+      padding: 6px 10px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .location-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #f97316;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #6b7280;
+      margin-top: 10px;
+    }
+
+    /* Responsive – mobile comfort */
+    @media (max-width: 830px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+      }
+      .hero-card {
+        order: -1; /* photo above text on mobile */
+      }
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      nav ul {
+        font-size: 0.85rem;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding: 16px 14px 40px;
+      }
+      header {
+        backdrop-filter: blur(10px);
+      }
+      .nav-inner {
+        padding-inline: 14px;
+      }
+      .hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .hero-main {
+        padding-right: 0;
+      }
+      .hero-summary {
+        font-size: 0.9rem;
+      }
+      .hero-actions {
+        gap: 10px;
+      }
+      .btn {
+        flex: 1 1 100%;
+        justify-content: center;
+      }
+      .hero-meta {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .hero-photo-ring {
+        width: 55vw;
+        height: 55vw;
+      }
+      .section-card {
+        padding: 14px 14px 16px;
+      }
+      .education-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <div class="logo">
+        <span class="logo-badge">DP</span>
+        <span>Deepak Patel</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#certifications">Achievements</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+      <div class="hero-main">
+        <div class="tag-pill">
+          <span class="tag-dot"></span>
+          <span>HR Associate • Statutory Compliance & Data</span>
+        </div>
+
+        <h1>Deepak Patel</h1>
+        <div class="hero-role">HR Associate | Statutory Compliance • Employee Data • Recruitment</div>
+
+        <p class="hero-summary">
+          One year of experience in HR operations with focus on statutory compliance (PF, ESIC),
+          employee data management, and recruitment. Competent in managing time office, leave, and
+          attendance processes while maintaining accurate personnel records and HR documentation.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">Contact Me</a>
+          <a href="#experience" class="btn btn-ghost">View Experience</a>
+        </div>
+
+        <div class="hero-meta">
+          <div class="meta-item">
+            <span class="meta-label">Current Role</span>
+            <span class="meta-value">HR Associate, VE Commercial Vehicles Ltd.</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Experience</span>
+            <span class="meta-value">1+ year in HR</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">Dewas, Madhya Pradesh</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PHOTO CARD -->
+      <aside class="hero-card">
+        <div class="hero-stat-chip">Open to HR & People Operations roles</div>
+        <div class="hero-badge">HR • Compliance • Analytics</div>
+
+        <div class="hero-photo-wrapper">
+          <div class="hero-photo-ring">
+            <div class="hero-photo-inner">
+              <!-- Use your own image file -->
+              <img src="your-photo.jpg" alt="Deepak Patel" class="hero-photo" />
+              <!-- Placeholder option:
+              <div class="hero-photo-placeholder">DP</div>
+              -->
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-title-block">
+          <div>
+            <div class="hero-title-main">HR Operations & Compliance</div>
+            <div class="hero-title-sub">PF • ESIC • Attendance • MIS Reporting</div>
+          </div>
+          <div class="hero-pulse"></div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-dot"></span>
+            <span>Experience</span>
+          </div>
+          <div class="section-subtitle">Hands-on HR operations & statutory compliance</div>
+        </div>
+
+        <div class="experience-item">
+          <div class="exp-main-line">
+            <div>
+              <div class="exp-role">HR Associate</div>
+              <div class="exp-company">VE Commercial Vehicles Ltd., Dewas (M.P.)</div>
+            </div>
+            <div class="exp-dates">Dec 2024 – Present</div>
+          </div>
+          <div class="exp-tags">Recruitment • Statutory Compliance • Time Office • HR Documentation</div>
+          <ul class="exp-list">
+            <li>Handle recruitment lifecycle including screening, selection, and onboarding formalities.</li>
+            <li>Manage employee attendance, leave records, and time office activities.</li>
+            <li>Take care of PF, ESIC, and other statutory/legal requirements.</li>
+            <li>Maintain employee records, personal files, and HR documents for audit-ready record-keeping.</li>
+            <li>Oversee canteen and Occupational Health Centre (OHC) coordination.</li>
+            <li>Address employee grievances and support contract labour management.</li>
+            <li>Prepare MIS reports, headcount data, and employee databases to support HR decisions.</li>
+            <li>Implement apprenticeship programs (NAPS/NATS) in line with legal requirements.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-dot"></span>
+            <span>Skills</span>
+          </div>
+          <div class="section-subtitle">HR operations, tools, and soft skills</div>
+        </div>
+
+        <div class="skills-wrap">
+          <div class="skill-group">
+            <div class="skill-label">HR Operations</div>
+            <div class="skill-items">
+              Recruitment & Selection • Employee Data Management • HR Documentation
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Payroll & Compliance</div>
+            <div class="skill-items">
+              PF • ESIC • Leave Management • Compliance Handling
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">Tools & Analytics</div>
+            <div class="skill-items">
+              MS Excel • Power BI (Dashboards & Reporting) • SAP (Basic)
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-label">People Skills</div>
+            <div class="skill-items">
+              Leadership & Team Coordination • Communication • Client Handling
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-dot"></span>
+            <span>Education</span>
+          </div>
+          <div class="section-subtitle">Strong academic foundation in Computer Science</div>
+        </div>
+
+        <div class="education-grid">
+          <div class="edu-item">
+            <div class="edu-degree">Bachelor of Science in Computer Science</div>
+            <div class="edu-inst">Government New Science College, Dewas (M.P.)</div>
+            <div class="edu-years">2020 – 2023</div>
+          </div>
+          <div class="edu-item">
+            <div class="edu-degree">Higher Secondary (12th) – Mathematics Stream</div>
+            <div class="edu-inst">School for Excellence, Dewas (M.P.)</div>
+            <div class="edu-years">2019 – 2020 • 83.20%</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Achievements -->
+    <section id="certifications">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-dot"></span>
+            <span>Certifications & Achievements</span>
+          </div>
+          <div class="section-subtitle">Leadership and discipline through NCC</div>
+        </div>
+
+        <ul class="cert-list">
+          <li>
+            <span class="bullet"></span>
+            <span>NCC ‘C’ Certificate Holder – Completed training under 10 MP Battalion NCC, Ujjain.</span>
+          </li>
+          <li>
+            <span class="bullet"></span>
+            <span>Advance Leadership Camp (ALC) – Developed leadership, teamwork, and discipline skills.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-card">
+        <div class="section-header">
+          <div class="section-title">
+            <span class="section-title-dot"></span>
+            <span>Contact</span>
+          </div>
+          <div class="section-subtitle">Let’s connect for HR opportunities</div>
+        </div>
+
+        <div class="contact-grid">
+          <div>
+            <div class="contact-item">
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">
+                <a href="tel:+916263093264">+91 6263093264</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Email</div>
+              <div class="contact-value">
+                <a href="mailto:deepakpatel09090@gmail.com">Deepakpatel09090@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">LinkedIn</div>
+              <div class="contact-value">
+                <!-- Replace with your actual LinkedIn profile URL -->
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener">View LinkedIn Profile</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-label">Location</div>
+              <div class="contact-value">
+                <span class="location-pill">
+                  <span class="location-dot"></span>
+                  Dewas, Madhya Pradesh, India
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p style="color: var(--text-muted); margin-bottom: 6px;">
+              I am looking for opportunities in HR Operations, HR Executive, and HR Analytics roles.
+              Feel free to reach out for full-time roles, internships, or collaborative projects.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Deepak Patel. All rights reserved.
+    </footer>
+  </main>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
